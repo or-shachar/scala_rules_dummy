@@ -1,0 +1,4 @@
+startup --batch
+run --verbose_failures
+startup --genrule_strategy=standalone
+startup --spawn_strategy=standalone
