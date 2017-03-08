@@ -1,5 +1,6 @@
 
 external_data = ["@io_bazel//src:bazel",
+                 "@com_google_protobuf//:protoc",
                   "@local_jdk//:jdk"]
 
 sources = [
