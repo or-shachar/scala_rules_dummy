@@ -1,5 +1,6 @@
 
-external_data = ["@local_jdk//:jdk"]
+external_data = ["@io_bazel//src:bazel",
+                  "@local_jdk//:jdk"]
 
 sources = [
     ".bazelrc",
