@@ -1,21 +1,24 @@
 # loading what's needed for bazel?
-http_archive(
+git_repository(
     name = "com_google_protobuf",
-    urls = ["https://github.com/google/protobuf/archive/b4b0e304be5a68de3d0ee1af9b286f958750f5e4.zip"],
+    remote = "https://github.com/google/protobuf.git",
+    commit = "b4b0e304be5a68de3d0ee1af9b286f958750f5e4",
 )
 
 # cc_proto_library rules implicitly depend on @com_google_protobuf_cc//:cc_toolchain,
 # which is the C++ proto runtime (base classes and common utilities).
-http_archive(
+git_repository(
     name = "com_google_protobuf_cc",
-    urls = ["https://github.com/google/protobuf/archive/b4b0e304be5a68de3d0ee1af9b286f958750f5e4.zip"],
+    remote = "https://github.com/google/protobuf.git",
+    commit = "b4b0e304be5a68de3d0ee1af9b286f958750f5e4",
 )
 
 # java_proto_library rules implicitly depend on @com_google_protobuf_java//:java_toolchain,
 # which is the Java proto runtime (base classes and common utilities).
-http_archive(
+git_repository(
     name = "com_google_protobuf_java",
-    urls = ["https://github.com/google/protobuf/archive/b4b0e304be5a68de3d0ee1af9b286f958750f5e4.zip"],
+    remote = "https://github.com/google/protobuf.git",
+    commit = "b4b0e304be5a68de3d0ee1af9b286f958750f5e4",
 )
 
 git_repository(
@@ -25,8 +28,6 @@ git_repository(
 )
 
 # loading what's needed for scala
-
-
 git_repository(
     name = "io_bazel_rules_scala",
     remote = "https://github.com/bazelbuild/rules_scala.git",
