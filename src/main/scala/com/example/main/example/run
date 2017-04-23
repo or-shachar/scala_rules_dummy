@@ -189,7 +189,7 @@ fi
 # Set JAVABIN to the path to the JVM launcher.
 JAVABIN=${JAVABIN:-${JAVA_RUNFILES}/local_jdk/bin/java}
 
-if [[ "$PRINT_JAVABIN" == 1 || "com.example.JavaBinary" == "--print_javabin" ]]; then
+if [[ "$PRINT_JAVABIN" == 1 || "com.example.DirTree" == "--print_javabin" ]]; then
   echo -n "$JAVABIN"
   exit 0
 fi

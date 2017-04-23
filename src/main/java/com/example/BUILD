@@ -1,14 +1,17 @@
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 
 
+java_library(
+    name = "dirtree",
+    srcs = ["DirTree.java"],
+    visibility = ["//visibility:public"]
+)
 
 java_binary(
     name = "run",
-    main_class = "com.example.JavaBinary",
-    srcs = ["JavaBinary.java"],
+    main_class="com.example.DirTree",
     resources = [":hello"],
-    deps = ["//src/main/java/com/example/rand"],
-    classpath_resources = ["//src/main/resources:resources"],
+    runtime_deps = [":dirtree"],
     visibility = ["//visibility:public"]
 )
 

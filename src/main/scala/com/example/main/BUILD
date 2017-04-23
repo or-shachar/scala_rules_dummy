@@ -1,4 +1,4 @@
-load("@io_bazel_rules_scala//scala:scala.bzl", "scala_library", "scala_binary", "scala_test")
+load("@io_bazel_rules_scala//scala:scala.bzl", "scala_library", "scala_binary", "scala_test","scala_junit_test")
 load("//:wix-fw.bzl","boostrap_binary")
 
 scala_binary(
@@ -41,3 +41,14 @@ genrule(
   outs = ["hello_world.xml.erb"],
   cmd = "echo Hello World > $@",
 )
+
+scala_junit_test(
+    name = "test_dirtree",
+    size = "small",
+    suffixes = ["Test"],
+    srcs = ["DirTreeTest.scala"],
+    deps = [
+        "//src/main/java/com/example:dirtree",
+    ],
+)
+

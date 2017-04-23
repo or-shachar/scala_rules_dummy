@@ -2,7 +2,7 @@ package com.example;
 
 import java.io.File;
 
-public class JavaBinary {
+public class DirTree {
     private static String getIndentString(int indent) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < indent; i++) {
@@ -10,13 +10,14 @@ public class JavaBinary {
         }
         return sb.toString();
     }
-    public static String printDirectoryTree(File folder) {
+
+    public static String calculate(File folder) {
         if (!folder.isDirectory()) {
             throw new IllegalArgumentException("folder is not a Directory");
         }
         int indent = 0;
         StringBuilder sb = new StringBuilder();
-        printDirectoryTree(folder, indent, sb,true);
+        calculate(folder, indent, sb,true);
         return sb.toString();
     }
 
@@ -27,8 +28,8 @@ public class JavaBinary {
         sb.append("\n");
     }
 
-    private static void printDirectoryTree(File folder, int indent,
-                                           StringBuilder sb,boolean keepDigging) {
+    private static void calculate(File folder, int indent,
+                                  StringBuilder sb, boolean keepDigging) {
         if (!folder.isDirectory()) {
             throw new IllegalArgumentException("folder is not a Directory");
         }
@@ -42,11 +43,14 @@ public class JavaBinary {
         }
             sb.append("\n");
 
-        for (File file : folder.listFiles()) {
-            if (file.isDirectory()) {
-                printDirectoryTree(file, indent + 1, sb,!"external".equals(folder.getName()));
-            } else {
-                printFile(file, indent + 1, sb);
+        File[] files = folder.listFiles();
+        if (files!=null) {
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    calculate(file, indent + 1, sb, !"external".equals(folder.getName()));
+                } else {
+                    printFile(file, indent + 1, sb);
+                }
             }
         }
 
@@ -56,6 +60,6 @@ public class JavaBinary {
         String cwd = System.getProperty("user.dir");
         System.out.println("CURRENT DIR: "+cwd);
         System.out.println("=============TREE===============");
-        System.out.println(printDirectoryTree(new File(cwd)));
+        System.out.println(calculate(new File(cwd)));
     }
 }
